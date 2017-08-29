@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31AE0A7B1F529FAA001D63C4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE0A7A1F529FAA001D63C4 /* Model.swift */; };
+		31AE0A7D1F529FEF001D63C4 /* Subjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE0A7C1F529FEF001D63C4 /* Subjects.swift */; };
+		31AE0A801F52F25C001D63C4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE0A7F1F52F25C001D63C4 /* TableViewController.swift */; };
 		31FF00401F52452B006183DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF003F1F52452B006183DB /* AppDelegate.swift */; };
 		31FF00421F52452B006183DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF00411F52452B006183DB /* ViewController.swift */; };
 		31FF00451F52452B006183DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31FF00431F52452B006183DB /* Main.storyboard */; };
@@ -34,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		31AE0A7A1F529FAA001D63C4 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		31AE0A7C1F529FEF001D63C4 /* Subjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subjects.swift; sourceTree = "<group>"; };
+		31AE0A7F1F52F25C001D63C4 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		31FF003C1F52452B006183DB /* SubjectReviewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubjectReviewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31FF003F1F52452B006183DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31FF00411F52452B006183DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +80,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31AE0A791F529F83001D63C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				31AE0A7A1F529FAA001D63C4 /* Model.swift */,
+				31AE0A7C1F529FEF001D63C4 /* Subjects.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		31AE0A7E1F52DE0C001D63C4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				31FF00411F52452B006183DB /* ViewController.swift */,
+				31AE0A7F1F52F25C001D63C4 /* TableViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		31FF00331F52452B006183DB = {
 			isa = PBXGroup;
 			children = (
@@ -97,8 +121,9 @@
 		31FF003E1F52452B006183DB /* SubjectReviewer */ = {
 			isa = PBXGroup;
 			children = (
+				31AE0A7E1F52DE0C001D63C4 /* Controller */,
+				31AE0A791F529F83001D63C4 /* Model */,
 				31FF003F1F52452B006183DB /* AppDelegate.swift */,
-				31FF00411F52452B006183DB /* ViewController.swift */,
 				31FF00431F52452B006183DB /* Main.storyboard */,
 				31FF00461F52452B006183DB /* Assets.xcassets */,
 				31FF00481F52452B006183DB /* LaunchScreen.storyboard */,
@@ -259,7 +284,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31AE0A7D1F529FEF001D63C4 /* Subjects.swift in Sources */,
+				31AE0A7B1F529FAA001D63C4 /* Model.swift in Sources */,
 				31FF00421F52452B006183DB /* ViewController.swift in Sources */,
+				31AE0A801F52F25C001D63C4 /* TableViewController.swift in Sources */,
 				31FF00401F52452B006183DB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,6 +535,7 @@
 				31FF00661F52452B006183DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		31FF00671F52452B006183DB /* Build configuration list for PBXNativeTarget "SubjectReviewerTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +544,7 @@
 				31FF00691F52452B006183DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		31FF006A1F52452B006183DB /* Build configuration list for PBXNativeTarget "SubjectReviewerUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +553,7 @@
 				31FF006C1F52452B006183DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
