@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AddSubjectViewController.swift
 //  SubjectReviewer
 //
 //  Created by siqi yang on 27/8/17.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
-    //MARK: Properties
-    var model = Model()
+class AddSubjectViewController: UIViewController, UITextFieldDelegate {
+    //MARK: - Properties
+    var model = Model.sharedInstance
     @IBOutlet weak var codeTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var rateTextField: UITextField!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var imageField: UIImageView!
+    @IBOutlet weak var ratingControl: RatingControl!
     
 
     override func viewDidLoad() {
@@ -27,6 +27,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
 
+    override func viewDidLayoutSubviews()
+    {
+        //print("viewDidLayoutSubviews. \(ratingControl)");
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -34,9 +39,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
 
     
-    //MARK: Actions
+    //MARK: - Actions
     @IBAction func addImage(_ sender: UIButton) {
-        imageField.image = #imageLiteral(resourceName: "IconI")
+        
+        // Load Head Letter Images
+        
+        let A = UIImage(named: "A")
+        imageField.image = A
+        model.addNewImage(image: A!)
     }
     
     @IBAction func getCodeTestValue(_ sender: UITextField) {
@@ -49,16 +59,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
         model.addNewName(name: nameTextField.text!)
     }
     
-    @IBAction func getRateTextValue(_ sender: UITextField) {
-
-        model.addNewRate(rate: rateTextField.text!)
-    }
+    
+    
+//    @IBAction func getRateTextValue(_ sender: UITextField) {
+//
+//        model.addNewRate(rate: String(ratingControl.rating))
+//    }
     
     @IBAction func getComTextValue(_ sender: UITextField) {
-        model.addNewComment(comment: codeTextField.text!)
+        model.addNewComment(comment: commentTextField.text!)
     }
     
     @IBAction func saveAsubject(_ sender: UIButton) {
+        model.addNewCode(code: codeTextField.text!)
+        model.addNewName(name: nameTextField.text!)
+        model.addNewComment(comment: commentTextField.text!)
+        model.addNewRate(rate: ratingControl.rating)
         model.addNewSub()
     }
     

@@ -7,49 +7,27 @@
 //
 
 import Foundation
+import UIKit
 
 class Subjects{
     private var subjectInforCode: String
-//    {
-//        set(code) {
-//            self.subjectInforCode = code
-//        }
-//        get {
-//            return self.subjectInforComment
-//        }
-//    }
+
     private var subjectInforName: String
-//    {
-//        set(name) {
-//            self.subjectInforName = name
-//        }
-//        get{
-//            return self.subjectInforName
-//        }
-//    }
-    private var subjectInforRate:Int!
-//    {
-//        set(rate) {
-//            self.subjectInforRate = rate
-//        }
-//        get{
-//            return self.subjectInforRate
-//        }
-//    }
-    private var subjectInforComment: String!
-//    {
-//        set(comment) {
-//            self.subjectInforComment = comment
-//        }
-//        get {
-//            return self.subjectInforComment
-//        }
-//    }
+
+    private var subjectInforRate:Int
+
+    private var subjectInforComment: String
+    private var subjectInforImage: UIImage
+
     
-    init(_ subjectInforCode: String,_ subjectInforName: String){
+    init(_ subjectInforCode: String,_ subjectInforName: String,_ subjectInforRate: Int,_ subjectInforComment: String,_ subjectInforImage: UIImage){
         self.subjectInforCode = subjectInforCode
         self.subjectInforName = subjectInforName
+        self.subjectInforRate = subjectInforRate
+        self.subjectInforComment = subjectInforComment
+        self.subjectInforImage = subjectInforImage
     }
+    
     
     
     func setSubjectInforCode(_ code: String){
@@ -60,12 +38,16 @@ class Subjects{
         self.subjectInforName = name
     }
     
-    func setSubjectInforRate(_ rate: Int!){
+    func setSubjectInforRate(_ rate: Int){
         self.subjectInforRate = rate
     }
     
-    func setSubjectInforComment(_ comment: String!){
+    func setSubjectInforComment(_ comment: String){
         self.subjectInforComment = comment
+    }
+    
+    func setSubjectInforImage(_ image: UIImage){
+        self.subjectInforImage = image
     }
     
     func getSubjectInforCode()-> String{
@@ -76,12 +58,16 @@ class Subjects{
         return self.subjectInforName
     }
     
-    func getSubjectInforRate()-> String{
-        return "\(self.subjectInforRate!)"
+    func getSubjectInforRate()-> Int{
+        return self.subjectInforRate
     }
     
     func getSubjectInforComment()-> String{
         return self.subjectInforComment
+    }
+    
+    func getSubjectInforImage()-> UIImage{
+        return self.subjectInforImage
     }
 
 }
