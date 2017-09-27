@@ -11,14 +11,14 @@ import UIKit
 
 class Subjects{
     private var subjectInforCode: String
-
+    
     private var subjectInforName: String
-
+    
     private var subjectInforRate:Int
-
+    
     private var subjectInforComment: String
     private var subjectInforImage: UIImage
-
+    
     
     init(_ subjectInforCode: String,_ subjectInforName: String,_ subjectInforRate: Int,_ subjectInforComment: String,_ subjectInforImage: UIImage){
         self.subjectInforCode = subjectInforCode
@@ -69,7 +69,7 @@ class Subjects{
     func getSubjectInforImage()-> UIImage{
         return self.subjectInforImage
     }
-
+    
 }
 
 

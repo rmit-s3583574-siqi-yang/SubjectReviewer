@@ -16,7 +16,7 @@ class Model{
     var name: String! = nil
     var rate: Int! = nil
     var comment: String! = nil
-    var image: UIImage! = nil
+    var image: UIImage! = #imageLiteral(resourceName: "A")
     
     var manySubjects = [Subjects]()
     
@@ -68,6 +68,7 @@ class Model{
     
     
     // Function that add new subject
+    // _ code:String,_ name: String,_ rate: Int,_ comment: String,_ image: UIImage
     func addNewSub(){
         
         

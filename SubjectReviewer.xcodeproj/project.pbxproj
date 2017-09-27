@@ -10,6 +10,7 @@
 		3115DC801F75190000D0F244 /* ShowSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3115DC7F1F75190000D0F244 /* ShowSubjectViewController.swift */; };
 		3115DC821F751C3C00D0F244 /* DataNotNull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3115DC811F751C3C00D0F244 /* DataNotNull.swift */; };
 		31637CA41F73E9710013016D /* SubjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31637CA31F73E9710013016D /* SubjectTableViewController.swift */; };
+		319BEDD01F7907A20015C289 /* ColorNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319BEDCF1F7907A20015C289 /* ColorNavigationController.swift */; };
 		31AE0A7B1F529FAA001D63C4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE0A7A1F529FAA001D63C4 /* Model.swift */; };
 		31AE0A7D1F529FEF001D63C4 /* Subjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AE0A7C1F529FEF001D63C4 /* Subjects.swift */; };
 		31C770B51F6A3F6600E949DC /* SubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C770B41F6A3F6600E949DC /* SubjectTableViewCell.swift */; };
@@ -44,6 +45,7 @@
 		3115DC7F1F75190000D0F244 /* ShowSubjectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowSubjectViewController.swift; sourceTree = "<group>"; };
 		3115DC811F751C3C00D0F244 /* DataNotNull.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataNotNull.swift; sourceTree = "<group>"; };
 		31637CA31F73E9710013016D /* SubjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectTableViewController.swift; sourceTree = "<group>"; };
+		319BEDCF1F7907A20015C289 /* ColorNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorNavigationController.swift; sourceTree = "<group>"; };
 		31AE0A7A1F529FAA001D63C4 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		31AE0A7C1F529FEF001D63C4 /* Subjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subjects.swift; sourceTree = "<group>"; };
 		31C770B41F6A3F6600E949DC /* SubjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectTableViewCell.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		3137EE331F736C98000BA9FB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				31C770B41F6A3F6600E949DC /* SubjectTableViewCell.swift */,
 				31C770B61F6F558B00E949DC /* RatingControl.swift */,
 			);
 			name = View;
@@ -109,8 +112,8 @@
 		31AE0A7E1F52DE0C001D63C4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				319BEDCF1F7907A20015C289 /* ColorNavigationController.swift */,
 				31FF00411F52452B006183DB /* AddSubjectViewController.swift */,
-				31C770B41F6A3F6600E949DC /* SubjectTableViewCell.swift */,
 				31637CA31F73E9710013016D /* SubjectTableViewController.swift */,
 				3115DC7F1F75190000D0F244 /* ShowSubjectViewController.swift */,
 			);
@@ -307,6 +310,7 @@
 				31C770B71F6F558B00E949DC /* RatingControl.swift in Sources */,
 				31AE0A7D1F529FEF001D63C4 /* Subjects.swift in Sources */,
 				3115DC801F75190000D0F244 /* ShowSubjectViewController.swift in Sources */,
+				319BEDD01F7907A20015C289 /* ColorNavigationController.swift in Sources */,
 				31AE0A7B1F529FAA001D63C4 /* Model.swift in Sources */,
 				31FF00421F52452B006183DB /* AddSubjectViewController.swift in Sources */,
 				31637CA41F73E9710013016D /* SubjectTableViewController.swift in Sources */,

@@ -34,7 +34,7 @@ import UIKit
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupButtons()
-    
+        
     }
     
     
@@ -61,7 +61,7 @@ import UIKit
             rating = selectedRating
         }
     }
-        
+    
     
     //MARK: - Private Methods
     
@@ -71,7 +71,7 @@ import UIKit
         //print("setupButton. \(self)");
         
         
-
+        
         
         // Remove all buttons in the last setups
         for button in ratingButtons{
@@ -85,7 +85,7 @@ import UIKit
         let StarFill = UIImage(named: "StarFill", in: bundle, compatibleWith: self.traitCollection)
         let StarEmpty = UIImage(named:"StarEmpty", in: bundle, compatibleWith: self.traitCollection)
         let StarHighL = UIImage(named:"StarHighL", in: bundle, compatibleWith: self.traitCollection)
-
+        
         
         for index in 0..<starCount {
             
@@ -117,7 +117,7 @@ import UIKit
         }
         
         updateButtonSelectionStates()
-    
+        
     }
     
     private func updateButtonSelectionStates() {
@@ -150,6 +150,6 @@ import UIKit
             button.accessibilityValue = valueString
         }
     }
-
-
+    
+    
 }
