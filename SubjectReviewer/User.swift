@@ -1,5 +1,5 @@
 //
-//  Model.swift
+//  User.swift
 //  SubjectReviewer
 //
 //  Created by siqi yang on 27/8/17.
@@ -9,18 +9,18 @@
 import Foundation
 import UIKit
 
-class Model{
+class User{
     
     
     var code: String! = nil
     var name: String! = nil
     var rate: Int! = nil
     var comment: String! = nil
-    var image: UIImage! = #imageLiteral(resourceName: "A")
+    var image: UIImage! = #imageLiteral(resourceName: "A")//Image.image[0]
     
-    var manySubjects = [Subjects]()
+    var manySubjects = [Subject]()
     
-    var newSubject: Subjects! = nil
+    var newSubject: Subject! = nil
     
     var DuplicateSubject: Bool = false
     
@@ -54,14 +54,14 @@ class Model{
     
     //Signleton
     private struct Static {
-        static var instance: Model?
+        static var instance: User?
     }
     
-    class var sharedInstance: Model
+    class var sharedInstance: User
     {
         if !(Static.instance != nil)
         {
-            Static.instance = Model()
+            Static.instance = User()
         }
         return Static.instance!
     }
@@ -82,7 +82,7 @@ class Model{
                 
                 print ("manySubjects is nil")
                 
-                let newSubject: Subjects = Subjects(self.code, self.name, self.rate, self.comment!, self.image)
+                let newSubject: Subject = Subject(self.code, self.name, self.rate, self.comment!, self.image)
                 manySubjects = []
                 manySubjects.append(newSubject)
                 
@@ -107,7 +107,7 @@ class Model{
                 }
                 
                 if DuplicateSubject != true {
-                    let newSubject: Subjects = Subjects(self.code, self.name, self.rate, self.comment!, self.image)
+                    let newSubject: Subject = Subject(self.code, self.name, self.rate, self.comment!, self.image)
                     
                     manySubjects.append(newSubject)
                 }

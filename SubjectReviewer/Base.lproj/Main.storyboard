@@ -52,7 +52,7 @@
                                             <color key="titleColor" red="0.50599706172943115" green="0.58771872520446777" blue="0.75689679384231567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="addImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g5d-Q4-L6R"/>
+                                            <segue destination="COt-Bu-VB7" kind="show" id="Yx3-ox-KMc"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your comments here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eSx-Yd-nvD">
@@ -130,6 +130,45 @@
                 <exit id="6CZ-6V-eex" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2932" y="-840.62968515742136"/>
+        </scene>
+        <!--Image Collection View Controller-->
+        <scene sceneID="N3s-nk-G0v">
+            <objects>
+                <collectionViewController id="COt-Bu-VB7" customClass="ImageCollectionViewController" customModule="SubjectReviewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="xln-8W-qv8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rDd-2i-IHs">
+                            <size key="itemSize" width="105" height="105"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="kaJ-Vo-v4I" customClass="ImageCollectionViewCell" customModule="SubjectReviewer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="A" translatesAutoresizingMaskIntoConstraints="NO" id="Sxq-Nb-lsz">
+                                            <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <connections>
+                                    <outlet property="image" destination="Sxq-Nb-lsz" id="XNe-ja-Koj"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uqw-bT-VUZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3814" y="-913"/>
         </scene>
         <!--Subjects-->
         <scene sceneID="NJc-wr-cyB">
@@ -368,7 +407,6 @@
         <!--ShowSubjectNavigationController-->
         <scene sceneID="vxP-A8-zq5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5dJ-CJ-1LE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController title="ShowSubjectNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="l9H-Wf-FSH" customClass="ColorNavigationController" customModule="SubjectReviewer" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Tq-qS-VNy">
@@ -391,6 +429,7 @@
                         <segue destination="O8u-kE-h6P" kind="relationship" relationship="rootViewController" id="Fj7-ds-S1g"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5dJ-CJ-1LE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1274" y="69"/>
         </scene>

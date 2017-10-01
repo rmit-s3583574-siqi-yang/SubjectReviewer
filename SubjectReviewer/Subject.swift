@@ -1,5 +1,5 @@
 //
-//  Subjects.swift
+//  Subject.swift
 //  SubjectReviewer
 //
 //  Created by siqi yang on 27/8/17.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Subjects{
+class Subject{
     private var subjectInforCode: String
     
     private var subjectInforName: String

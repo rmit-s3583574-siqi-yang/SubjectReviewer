@@ -12,21 +12,24 @@ import os.log
 class SubjectTableViewController: UITableViewController {
     
     //MARK: - Properties
-    var model = Model.sharedInstance
+    var user = User.sharedInstance
     var sampleData = DataNotNull()
     
     //MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if model.manySubjects.count == 0 {
+        let dataFiles = NSHomeDirectory()
+        print (dataFiles)
+        
+        if user.manySubjects.count == 0 {
             sampleData.setData()
         }
         
-        for eachSubject in 0..<model.manySubjects.count {
-            print(model.manySubjects[eachSubject].getSubjectInforCode())
-            print(model.manySubjects[eachSubject].getSubjectInforName())
-            print(model.manySubjects[eachSubject].getSubjectInforRate())
+        for eachSubject in 0..<user.manySubjects.count {
+            print(user.manySubjects[eachSubject].getSubjectInforCode())
+            print(user.manySubjects[eachSubject].getSubjectInforName())
+            print(user.manySubjects[eachSubject].getSubjectInforRate())
         }
         
         // Uncomment the following line to preserve selection between presentations
@@ -56,7 +59,7 @@ class SubjectTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return model.manySubjects.count
+        return user.manySubjects.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,7 +72,7 @@ class SubjectTableViewController: UITableViewController {
             
         }
         
-        let subject = model.manySubjects[indexPath.row]
+        let subject = user.manySubjects[indexPath.row]
         
         
         // Configurate cell
@@ -87,13 +90,13 @@ class SubjectTableViewController: UITableViewController {
         // check whether a row in the table view is selected
         if let selectedIndexPath = tableView.indexPathForSelectedRow {
             // Update an existing subject.
-            model.editSub(index: selectedIndexPath.row)
+            user.editSub(index: selectedIndexPath.row)
             tableView.reloadRows(at: [selectedIndexPath], with: .none)
         }
         else {
             // Add a new subject.
-            model.addNewSub()
-            let newIndexPath = IndexPath(row: model.manySubjects.count-1, section: 0)
+            user.addNewSub()
+            let newIndexPath = IndexPath(row: user.manySubjects.count-1, section: 0)
             tableView.insertRows(at: [newIndexPath], with: .right)
             
         }
@@ -116,7 +119,7 @@ class SubjectTableViewController: UITableViewController {
      override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
      if editingStyle == .delete {
      // Delete the row from the data source
-        model.manySubjects.remove(at: indexPath.row)
+        user.manySubjects.remove(at: indexPath.row)
      tableView.deleteRows(at: [indexPath], with: .fade)
      } else if editingStyle == .insert {
      // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

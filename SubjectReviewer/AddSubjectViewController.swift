@@ -11,7 +11,7 @@ import os.log
 
 class AddSubjectViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Properties
-    var model = Model.sharedInstance
+    var user = User.sharedInstance
     @IBOutlet weak var codeTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var commentTextField: UITextField!
@@ -37,12 +37,12 @@ class AddSubjectViewController: UIViewController, UITextFieldDelegate {
         print("the picked Subject index is: ",ShowSubjectViewController.selectedSubject ?? 0)
         
         if ShowSubjectViewController.selectedSubject != nil  {
-            navigationItem.title = model.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforName()
-            codeTextField.text = model.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforCode()
-            nameTextField.text = model.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforName()
-            commentTextField.text = model.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforComment()
-            imageField.image = model.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforImage()
-            ratingControl.rating = model.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforRate()
+            navigationItem.title = user.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforName()
+            codeTextField.text = user.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforCode()
+            nameTextField.text = user.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforName()
+            commentTextField.text = user.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforComment()
+            imageField.image = user.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforImage()
+            ratingControl.rating = user.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforRate()
         }
         
         updateSaveButtonState()
@@ -88,7 +88,7 @@ class AddSubjectViewController: UIViewController, UITextFieldDelegate {
         let codeText = codeTextField.text ?? ""
         let nameText = nameTextField.text ?? ""
         let commentText = commentTextField.text ?? ""
-        //        let imageSet = imageField.image ?? #imageLiteral(resourceName: "StarFill")
+        
         
         saveButton.isEnabled = !(codeText.isEmpty || nameText.isEmpty || commentText.isEmpty)
         
@@ -128,25 +128,24 @@ class AddSubjectViewController: UIViewController, UITextFieldDelegate {
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
-        model.addNewCode(code: codeTextField.text!)
-        model.addNewName(name: nameTextField.text!)
-        model.addNewComment(comment: commentTextField.text!)
-        model.addNewRate(rate: ratingControl.rating)
+        user.addNewCode(code: codeTextField.text!)
+        user.addNewName(name: nameTextField.text!)
+        user.addNewComment(comment: commentTextField.text!)
+        user.addNewRate(rate: ratingControl.rating)
         
         
         
         
     }
     
-    //MARK: - Actions
-    @IBAction func addImage(_ sender: UIButton) {
-        
-        // Load Head Letter Images
-        
-        let A = UIImage(named: "A")
-        imageField.image = A
-        model.addNewImage(image: A!)
-    }
+//    //MARK: - Actions
+//    @IBAction func addImage(_ sender: UIButton) {
+//        
+//        // Load Head Letter Images
+//        
+//        imageField.image = #imageLiteral(resourceName: "A")//Image.image[0]
+//        model.addNewImage(image: #imageLiteral(resourceName: "A"))
+//    }
     
     
 }
