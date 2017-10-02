@@ -9,39 +9,46 @@
 import UIKit
 import os.log
 
+
 class SubjectTableViewController: UITableViewController {
     
     //MARK: - Properties
-    var user = User.sharedInstance
-    var sampleData = DataNotNull()
+    var model = Model.sharedInstance
+
     
     //MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let dataFiles = NSHomeDirectory()
-        print (dataFiles)
+        print ("yooooo->"+dataFiles)
         
-        if user.manySubjects.count == 0 {
-            sampleData.setData()
-        }
         
-        for eachSubject in 0..<user.manySubjects.count {
-            print(user.manySubjects[eachSubject].getSubjectInforCode())
-            print(user.manySubjects[eachSubject].getSubjectInforName())
-            print(user.manySubjects[eachSubject].getSubjectInforRate())
+        print("I will print all subjects you have!")
+        print("you have \(model.subjectDB.count) subjects for now")
+        for eachSubject in 0..<model.subjectDB.count{
+            
+            print("I'm in the loop")
+            print(model.subjectDB[eachSubject].code ?? "it's nil")
+            print(model.subjectDB[eachSubject].name ?? "it's nil")
+            print(model.subjectDB[eachSubject].rate)
+            print("finish one looping")
+            
         }
+        print("finish printing all subjects for now!")
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
-         //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-         navigationItem.leftBarButtonItem = editButtonItem
+        //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        //navigationItem.leftBarButtonItem = editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         tableView.reloadData()
+        model.getSubjects()
+        
         
     }
     
@@ -59,7 +66,7 @@ class SubjectTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return user.manySubjects.count
+        return model.subjectDB.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,75 +79,93 @@ class SubjectTableViewController: UITableViewController {
             
         }
         
-        let subject = user.manySubjects[indexPath.row]
+        let sub = model.getSubject(indexPath)
         
-        
-        // Configurate cell
-        cell.nameLabel.text = subject.getSubjectInforName()
-        cell.codeLabel.text = subject.getSubjectInforCode()
-        cell.imageDisplay.image = subject.getSubjectInforImage()
-        cell.ratingControl.rating = subject.getSubjectInforRate()
-        
+        //cell
+
+        cell.nameLabel.text = sub.name
+        cell.codeLabel.text = sub.code
+        cell.imageDisplay.image = UIImage(named: sub.image!)
+        cell.ratingControl.rating = Int(sub.rate)
+        print(sub.code ?? "nil")
+        print(sub.name ?? "nil")
         return cell
     }
     
-    //MARK: - Actions
-    @IBAction func unwindToSubjectList(sender: UIStoryboardSegue) {
+//    //MARK: - Actions
+//    @IBAction func unwindToSubjectList(sender: UIStoryboardSegue) {
+//        
+//        // check whether a row in the table view is selected
+//        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+//            // Update an existing subject.
+//            model.editSub(index: selectedIndexPath.row)
+//            tableView.reloadRows(at: [selectedIndexPath], with: .none)
+//        }
+//        else {
+//            // Add a new subject.
+//            model.addNewSub()
+//            let newIndexPath = IndexPath(row: model.manySubjects.count-1, section: 0)
+//            tableView.insertRows(at: [newIndexPath], with: .right)
+//            
+//        }
+//    
+//    }
+    
+    
+    
+//    // Override to support conditional editing of the table view.
+//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        // Return false if you do not want the specified item to be editable.
+//        return true
+//    }
+//    
+//    
+//    
+//    // Override to support editing the table view.
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            // Delete the row from the data source
+//            model.manySubjects.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        } else if editingStyle == .insert {
+//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//        }
+//    }
+    
+    
+    
+    // MARK: - Enable Swipe to Delete
+    // System method that enables swipe to delete on a row in a tableview controller.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
+        return true
+    }
+    
+    // System method that gets called when delete is selected
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        model.deleteSubject(model.subjectDB[indexPath.row])
+        model.subjectDB.remove(at: indexPath.row)
         
-        // check whether a row in the table view is selected
-        if let selectedIndexPath = tableView.indexPathForSelectedRow {
-            // Update an existing subject.
-            user.editSub(index: selectedIndexPath.row)
-            tableView.reloadRows(at: [selectedIndexPath], with: .none)
-        }
-        else {
-            // Add a new subject.
-            user.addNewSub()
-            let newIndexPath = IndexPath(row: user.manySubjects.count-1, section: 0)
-            tableView.insertRows(at: [newIndexPath], with: .right)
-            
-        }
-        
-        
-        
+        self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+        model.getSubjects()
     }
     
     
     
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
+    //     // Override to support rearranging the table view.
+    //     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+    //
+    //     }
+    //
+    //
+    //
+    //     // Override to support conditional rearranging of the table view.
+    //     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+    //     // Return false if you do not want the item to be re-orderable.
+    //     return true
+    //     }
     
-    
-    
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-        user.manySubjects.remove(at: indexPath.row)
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
- 
-    
-    
-//     // Override to support rearranging the table view.
-//     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-//     
-//     }
-// 
-//    
-//    
-//     // Override to support conditional rearranging of the table view.
-//     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-//     // Return false if you do not want the item to be re-orderable.
-//     return true
-//     }
- 
     
     
     // MARK: - Navigation
@@ -172,6 +197,7 @@ class SubjectTableViewController: UITableViewController {
             let selectedSubject = indexPath.row
             
             ShowSubjectViewController.selectedSubject = selectedSubject
+            
             
         default:
             fatalError("Unexpected Segue Identifier;")

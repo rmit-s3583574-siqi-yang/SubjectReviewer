@@ -12,7 +12,7 @@ class ShowSubjectViewController: UIViewController {
     
     
     //MARK: - Properties
-    var user = User.sharedInstance
+    var model = Model.sharedInstance
     static var selectedSubject: Int? = nil
     
     
@@ -27,11 +27,11 @@ class ShowSubjectViewController: UIViewController {
         super.viewDidLoad()
         
         //Add Subject Infor to View
-        showImage.image = user.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforImage()
-        showNameLabel.text = user.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforName()
-        showRating.rating = user.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforRate()
-        showComment.text = user.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforComment()
-        navigationItem.title = user.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforCode()
+        showImage.image = UIImage(named: model.subjectDB[ShowSubjectViewController.selectedSubject!].image!)
+        showNameLabel.text = model.subjectDB[ShowSubjectViewController.selectedSubject!].name
+        showRating.rating = Int(model.subjectDB[ShowSubjectViewController.selectedSubject!].rate)
+        showComment.text = model.subjectDB[ShowSubjectViewController.selectedSubject!].comment
+        navigationItem.title = model.subjectDB[ShowSubjectViewController.selectedSubject!].code
         
         // Do any additional setup after loading the view.
         
@@ -65,3 +65,4 @@ class ShowSubjectViewController: UIViewController {
      */
     
 }
+

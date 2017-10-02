@@ -13,9 +13,30 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    //var model = Model.sharedInstance
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+//        //model.getSubjects()
+//        
+//        /* Get references to all of our controllers so we can set the intial data */
+//        let tabBarController = self.window!.rootViewController as! UITabBarController
+//        
+//        let splitViewController = tabBarController.viewControllers![0] as! UISplitViewController
+//        
+//        let navControllerForMasterView = splitViewController.viewControllers.first as! UINavigationController
+//        let navControllerFordetailViewController = splitViewController.viewControllers.last as! UINavigationController
+//        
+//        let masterViewController = navControllerForMasterView.topViewController as! SubjectTableViewController
+//        let detailViewController = navControllerFordetailViewController.topViewController as! ShowSubjectViewController
+//        
+//        
+//        ShowSubjectViewController.selectedSubject = 0
+//        
+//        masterViewController.delegate = detailViewController
+//        detailViewController.navigationItem.leftItemsSupplementBackButton = true
+//        detailViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+        
         // Override point for customization after application launch.
         return true
     }

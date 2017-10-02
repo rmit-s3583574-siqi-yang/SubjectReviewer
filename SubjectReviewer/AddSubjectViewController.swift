@@ -11,7 +11,7 @@ import os.log
 
 class AddSubjectViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Properties
-    var user = User.sharedInstance
+    var model = Model.sharedInstance
     @IBOutlet weak var codeTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var commentTextField: UITextField!
@@ -19,6 +19,9 @@ class AddSubjectViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var ratingControl: RatingControl!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     private var currentTextField: UITextField?
+    
+    var imageName: String = "A"
+    var currentSubject: Subjects?
     
     
     //MARK: - Overrides
@@ -34,15 +37,20 @@ class AddSubjectViewController: UIViewController, UITextFieldDelegate {
         updateSaveButtonState()
         
         
+        
         print("the picked Subject index is: ",ShowSubjectViewController.selectedSubject ?? 0)
         
         if ShowSubjectViewController.selectedSubject != nil  {
-            navigationItem.title = user.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforName()
-            codeTextField.text = user.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforCode()
-            nameTextField.text = user.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforName()
-            commentTextField.text = user.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforComment()
-            imageField.image = user.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforImage()
-            ratingControl.rating = user.manySubjects[ShowSubjectViewController.selectedSubject!].getSubjectInforRate()
+            navigationItem.title = model.subjectDB[ShowSubjectViewController.selectedSubject!].name
+            codeTextField.text = model.subjectDB[ShowSubjectViewController.selectedSubject!].code
+            nameTextField.text = model.subjectDB[ShowSubjectViewController.selectedSubject!].name
+            commentTextField.text = model.subjectDB[ShowSubjectViewController.selectedSubject!].comment
+            imageName = model.subjectDB[ShowSubjectViewController.selectedSubject!].image!
+            imageField.image = UIImage(named: imageName)
+            
+            ratingControl.rating = Int(model.subjectDB[ShowSubjectViewController.selectedSubject!].rate)
+            
+            currentSubject = model.subjectDB[ShowSubjectViewController.selectedSubject!]
         }
         
         updateSaveButtonState()
@@ -101,6 +109,7 @@ class AddSubjectViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Navigation
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
+        model.getSubjects()
         if ShowSubjectViewController.selectedSubject == nil{
             dismiss(animated: true, completion: nil)
         }
@@ -114,29 +123,45 @@ class AddSubjectViewController: UIViewController, UITextFieldDelegate {
     
     
     
+    //MARK: - Actions
     
-    // This method lets you configure a view controller before it's presented.
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    @IBAction func saveSubject(_ sender: UIBarButtonItem) {
         
+        model.saveSubject(codeTextField.text!, name: nameTextField.text!, rate: ratingControl.rating, comment: commentTextField.text!, image: imageName, existing: currentSubject)
         
-        if let currentTextField = currentTextField {
-            currentTextField.resignFirstResponder()
+        model.getSubjects()
+        
+        if ShowSubjectViewController.selectedSubject == nil{
+            dismiss(animated: true, completion: nil)
         }
-        
-        // Configure the destination view controller only when the save button is pressed.
-        guard let button = sender as? UIBarButtonItem, button === saveButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-            return
+        else if let owningNavigationController = navigationController{
+            owningNavigationController.popViewController(animated: true)
         }
-        user.addNewCode(code: codeTextField.text!)
-        user.addNewName(name: nameTextField.text!)
-        user.addNewComment(comment: commentTextField.text!)
-        user.addNewRate(rate: ratingControl.rating)
-        
-        
-        
+        else {
+            fatalError("oops")
+        }
+
         
     }
+    
+    
+//    // This method lets you configure a view controller before it's presented.
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//        
+//        if let currentTextField = currentTextField {
+//            currentTextField.resignFirstResponder()
+//        }
+//        
+//        // Configure the destination view controller only when the save button is pressed.
+//        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+//            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+//            return
+//        }
+//        
+//        model.saveSubject(codeTextField.text!, name: nameTextField.text!, rate: ratingControl.rating, comment: commentTextField.text!, image: imageName, existing: currentSubject)
+//        
+//    }
     
 //    //MARK: - Actions
 //    @IBAction func addImage(_ sender: UIButton) {
