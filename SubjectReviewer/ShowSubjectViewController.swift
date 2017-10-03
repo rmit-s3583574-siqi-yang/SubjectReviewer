@@ -32,10 +32,11 @@ class ShowSubjectViewController: UIViewController {
         showRating.rating = Int(model.subjectDB[ShowSubjectViewController.selectedSubject!].rate)
         showComment.text = model.subjectDB[ShowSubjectViewController.selectedSubject!].comment
         navigationItem.title = model.subjectDB[ShowSubjectViewController.selectedSubject!].code
-        
-        // Do any additional setup after loading the view.
-        
-        
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewDidLoad()
     }
     
     override func didReceiveMemoryWarning() {

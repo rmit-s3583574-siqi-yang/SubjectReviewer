@@ -23,25 +23,25 @@ class SubjectTableViewController: UITableViewController {
         let dataFiles = NSHomeDirectory()
         print ("yooooo->"+dataFiles)
         
-        
+        print("---------------------------------------------------")
         print("I will print all subjects you have!")
         print("you have \(model.subjectDB.count) subjects for now")
         for eachSubject in 0..<model.subjectDB.count{
             
-            print("I'm in the loop")
+            
             print(model.subjectDB[eachSubject].code ?? "it's nil")
             print(model.subjectDB[eachSubject].name ?? "it's nil")
             print(model.subjectDB[eachSubject].rate)
-            print("finish one looping")
+            
             
         }
-        print("finish printing all subjects for now!")
+        print("finish----------------------------------for now!")
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        //navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.leftBarButtonItem = editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,8 +87,7 @@ class SubjectTableViewController: UITableViewController {
         cell.codeLabel.text = sub.code
         cell.imageDisplay.image = UIImage(named: sub.image!)
         cell.ratingControl.rating = Int(sub.rate)
-        print(sub.code ?? "nil")
-        print(sub.name ?? "nil")
+
         return cell
     }
     
@@ -113,43 +112,45 @@ class SubjectTableViewController: UITableViewController {
     
     
     
-//    // Override to support conditional editing of the table view.
-//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        // Return false if you do not want the specified item to be editable.
-//        return true
-//    }
-//    
-//    
-//    
-//    // Override to support editing the table view.
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            // Delete the row from the data source
-//            model.manySubjects.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        } else if editingStyle == .insert {
-//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//        }
-//    }
-    
-    
-    
-    // MARK: - Enable Swipe to Delete
-    // System method that enables swipe to delete on a row in a tableview controller.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
-    {
+    // Override to support conditional editing of the table view.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
         return true
     }
     
-    // System method that gets called when delete is selected
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
-    {
-        model.deleteSubject(model.subjectDB[indexPath.row])
-        model.subjectDB.remove(at: indexPath.row)
-        
-        self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
-        model.getSubjects()
+    
+    
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            model.deleteSubject(model.subjectDB[indexPath.row])
+            model.subjectDB.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            model.getSubjects()
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
     }
+    
+    
+    
+//    // MARK: - Enable Swipe to Delete
+//    // System method that enables swipe to delete on a row in a tableview controller.
+//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+//    {
+//        return true
+//    }
+//    
+//    // System method that gets called when delete is selected
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+//    {
+//        model.deleteSubject(model.subjectDB[indexPath.row])
+//        model.subjectDB.remove(at: indexPath.row)
+//        
+//        self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+//        model.getSubjects()
+//    }
     
     
     

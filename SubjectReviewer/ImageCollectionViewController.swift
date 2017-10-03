@@ -11,9 +11,16 @@ import UIKit
 private let reuseIdentifier = "ImageCollectionViewCell"
 
 class ImageCollectionViewController: UICollectionViewController {
+    
+    static var seletedIconIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //let layout = UICollectionViewLayout
+        
+        
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,15 +36,30 @@ class ImageCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+//        
+//        let icon = sender as? UICollectionViewCell
+//        let indexIcon = icon?.index(ofAccessibilityElement: <#Any#>)
+        guard let selectedIconCell = sender as? ImageCollectionViewCell else {
+            fatalError("Unexpected sender: ")
+        }
+        
+        guard let indexPath = collectionView?.indexPath(for: selectedIconCell) else {
+            fatalError("The selected cell is not being displayed by the table")
+        }
+        
+        // Pass the selected Subject Index to ShowSubjectViewController
+        let selectedIcon = indexPath.row
+        
+        ImageCollectionViewController.seletedIconIndex = selectedIcon
     }
-    */
+    
 
     // MARK: UICollectionViewDataSource
 
@@ -55,10 +77,9 @@ class ImageCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImageCollectionViewCell
     
-        // Configure the cell
-        let images: [String] = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-        
-        cell.image.image = UIImage(named: images[indexPath.row])
+        cell.image.image = UIImage(named: Image.image[indexPath.row])
+        cell.layer.borderWidth = 1.0
+        cell.layer.borderColor = UIColor.gray.cgColor
     
         return cell
     }

@@ -66,13 +66,7 @@ import UIKit
     //MARK: - Private Methods
     
     private func setupButtons(){
-        
-        
-        //print("setupButton. \(self)");
-        
-        
-        
-        
+
         // Remove all buttons in the last setups
         for button in ratingButtons{
             removeArrangedSubview(button)

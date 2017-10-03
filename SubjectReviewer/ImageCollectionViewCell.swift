@@ -24,9 +24,13 @@ class ImageCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        super.didUpdateFocus(in: context, with: coordinator)
+    }
+
     
 //    func setimage(_ item:Int){
-//        
+//
 //        let uiimage: UIImage = UIImage(named: images[item])!
 //        image.image = uiimage;
 //    }

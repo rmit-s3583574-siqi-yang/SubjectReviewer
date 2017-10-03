@@ -134,11 +134,11 @@
         <scene sceneID="N3s-nk-G0v">
             <objects>
                 <collectionViewController id="COt-Bu-VB7" customClass="ImageCollectionViewController" customModule="SubjectReviewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="xln-8W-qv8">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="xln-8W-qv8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rDd-2i-IHs">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="15" id="rDd-2i-IHs">
                             <size key="itemSize" width="105" height="105"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -155,11 +155,13 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="A" translatesAutoresizingMaskIntoConstraints="NO" id="Sxq-Nb-lsz">
                                             <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         </imageView>
                                     </subviews>
                                 </view>
                                 <connections>
                                     <outlet property="image" destination="Sxq-Nb-lsz" id="B3D-4R-bb1"/>
+                                    <segue destination="0AV-OO-HTt" kind="unwind" unwindAction="unwindToAddSubjectWithSender:" id="4DH-Lx-57A"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -167,6 +169,7 @@
                     <navigationItem key="navigationItem" id="0QB-rR-dbD"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uqw-bT-VUZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="0AV-OO-HTt" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4750" y="-385"/>
         </scene>
@@ -344,7 +347,7 @@
         <scene sceneID="6xs-P6-YWD">
             <objects>
                 <navigationController title="StartNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jz6-Df-qNx" customClass="ColorNavigationController" customModule="SubjectReviewer" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Subjects" id="A4R-4W-DJf"/>
+                    <tabBarItem key="tabBarItem" title="Subjects" image="list" id="A4R-4W-DJf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XC0-mm-odN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -434,15 +437,21 @@
             </objects>
             <point key="canvasLocation" x="1788" y="21"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Color Tab Bar Controller-->
         <scene sceneID="vnj-Zq-owV">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="C5T-eZ-boy" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="C5T-eZ-boy" customClass="ColorTabBarController" customModule="SubjectReviewer" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="mCj-qb-p9c">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                            <color key="value" red="0.3567943871" green="0.46147996190000001" blue="0.69081866739999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="jz6-Df-qNx" kind="relationship" relationship="viewControllers" id="EiV-gV-9PE"/>
                         <segue destination="c2b-Fi-61w" kind="relationship" relationship="viewControllers" id="phx-Zl-Mks"/>
@@ -452,10 +461,10 @@
             </objects>
             <point key="canvasLocation" x="63" y="-841"/>
         </scene>
-        <!--View Controller-->
+        <!--Nearest Library-->
         <scene sceneID="93c-7g-aEG">
             <objects>
-                <viewController id="bij-U0-xHW" sceneMemberID="viewController">
+                <viewController id="bij-U0-xHW" customClass="MapViewController" customModule="SubjectReviewer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oD6-b2-VZh"/>
                         <viewControllerLayoutGuide type="bottom" id="Kj4-2J-dNc"/>
@@ -463,25 +472,77 @@
                     <view key="view" contentMode="scaleToFill" id="yzs-Uu-U3b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WeX-VK-oHj">
+                                <rect key="frame" x="0.0" y="64" width="375" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="56o-oZ-Epe"/>
+                                </constraints>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q38-rU-8od">
+                                <rect key="frame" x="16" y="322" width="343" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="textColor" red="0.3567943871" green="0.46147996190000001" blue="0.69081866739999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uy7-Xx-ZHD">
+                                <rect key="frame" x="16" y="377" width="343" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.3567943871" green="0.46147996190000001" blue="0.69081866739999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJF-zp-CNx">
+                                <rect key="frame" x="16" y="417" width="343" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.3567943871" green="0.46147996190000001" blue="0.69081866739999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="WeX-VK-oHj" secondAttribute="trailing" id="15e-K8-mM3"/>
+                            <constraint firstItem="WeX-VK-oHj" firstAttribute="top" secondItem="oD6-b2-VZh" secondAttribute="bottom" id="1Tq-1x-dEl"/>
+                            <constraint firstItem="WeX-VK-oHj" firstAttribute="leading" secondItem="yzs-Uu-U3b" secondAttribute="leading" id="EtA-9Y-zLW"/>
+                            <constraint firstItem="WeX-VK-oHj" firstAttribute="centerX" secondItem="yzs-Uu-U3b" secondAttribute="centerX" id="eMx-K8-P6k"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="wwX-l1-eUh"/>
+                    <navigationItem key="navigationItem" title="Nearest Library" id="wwX-l1-eUh"/>
+                    <connections>
+                        <outlet property="map" destination="WeX-VK-oHj" id="V6t-hr-OKv"/>
+                        <outlet property="statusText" destination="NJF-zp-CNx" id="8q3-OS-ilT"/>
+                        <outlet property="text" destination="Q38-rU-8od" id="1aN-sU-uXo"/>
+                        <outlet property="vText" destination="Uy7-Xx-ZHD" id="GtQ-BK-Oaz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gi4-iG-30t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="926" y="21"/>
+            <point key="canvasLocation" x="925.60000000000002" y="20.239880059970016"/>
         </scene>
         <!--Map-->
         <scene sceneID="HoB-5L-cU1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c2b-Fi-61w" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="xE6-Mg-GhT"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c2b-Fi-61w" customClass="ColorNavigationController" customModule="SubjectReviewer" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" image="map" id="xE6-Mg-GhT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CbZ-6z-tSy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="barTintColor">
+                            <color key="value" red="0.3567943871" green="0.46147996190000001" blue="0.69081866739999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="bij-U0-xHW" kind="relationship" relationship="rootViewController" id="NIW-Xt-s8Q"/>
                     </connections>
@@ -493,6 +554,8 @@
     </scenes>
     <resources>
         <image name="A" width="128" height="128"/>
+        <image name="list" width="25" height="25"/>
+        <image name="map" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="W1z-OT-SaQ"/>

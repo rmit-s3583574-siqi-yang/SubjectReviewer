@@ -58,10 +58,6 @@ class AddSubjectViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func viewDidLayoutSubviews()
-    {
-        //print("viewDidLayoutSubviews. \(ratingControl)");
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -140,37 +136,59 @@ class AddSubjectViewController: UIViewController, UITextFieldDelegate {
         else {
             fatalError("oops")
         }
-
+        model.getSubjects()
+        
+        
+    }
+    
+    //MARK: - Actions
+    @IBAction func unwindToAddSubject(sender: UIStoryboardSegue) {
+        
+        imageName = Image.image[ImageCollectionViewController.seletedIconIndex]
+        imageField.image = UIImage(named: imageName)
+//        // check whether a row in the table view is selected
+//        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+//            // Update an existing subject.
+//            model.editSub(index: selectedIndexPath.row)
+//            tableView.reloadRows(at: [selectedIndexPath], with: .none)
+//        }
+//        else {
+//            // Add a new subject.
+//            model.addNewSub()
+//            let newIndexPath = IndexPath(row: model.manySubjects.count-1, section: 0)
+//            tableView.insertRows(at: [newIndexPath], with: .right)
+//            
+//        }
         
     }
     
     
-//    // This method lets you configure a view controller before it's presented.
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        
-//        
-//        if let currentTextField = currentTextField {
-//            currentTextField.resignFirstResponder()
-//        }
-//        
-//        // Configure the destination view controller only when the save button is pressed.
-//        guard let button = sender as? UIBarButtonItem, button === saveButton else {
-//            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-//            return
-//        }
-//        
-//        model.saveSubject(codeTextField.text!, name: nameTextField.text!, rate: ratingControl.rating, comment: commentTextField.text!, image: imageName, existing: currentSubject)
-//        
-//    }
+    //    // This method lets you configure a view controller before it's presented.
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //
+    //
+    //        if let currentTextField = currentTextField {
+    //            currentTextField.resignFirstResponder()
+    //        }
+    //
+    //        // Configure the destination view controller only when the save button is pressed.
+    //        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+    //            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+    //            return
+    //        }
+    //
+    //        model.saveSubject(codeTextField.text!, name: nameTextField.text!, rate: ratingControl.rating, comment: commentTextField.text!, image: imageName, existing: currentSubject)
+    //
+    //    }
     
-//    //MARK: - Actions
-//    @IBAction func addImage(_ sender: UIButton) {
-//        
-//        // Load Head Letter Images
-//        
-//        imageField.image = #imageLiteral(resourceName: "A")//Image.image[0]
-//        model.addNewImage(image: #imageLiteral(resourceName: "A"))
-//    }
+    //    //MARK: - Actions
+    //    @IBAction func addImage(_ sender: UIButton) {
+    //
+    //        // Load Head Letter Images
+    //
+    //        imageField.image = #imageLiteral(resourceName: "A")//Image.image[0]
+    //        model.addNewImage(image: #imageLiteral(resourceName: "A"))
+    //    }
     
     
 }

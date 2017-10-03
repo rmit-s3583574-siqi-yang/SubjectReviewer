@@ -23,9 +23,6 @@ class Model{
         managedContext = appDelegate.persistentContainer.viewContext
         seedData()
         getSubjects()
-        
-        print("added seed data")
-
     }
     
     func getSubject(_ indexPath: IndexPath) -> Subjects
