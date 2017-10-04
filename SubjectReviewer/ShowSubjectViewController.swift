@@ -15,14 +15,12 @@ class ShowSubjectViewController: UIViewController {
     var model = Model.sharedInstance
     static var selectedSubject: Int? = nil
     
-    
-    
     @IBOutlet weak var showImage: UIImageView!
     @IBOutlet weak var showNameLabel: UILabel!
     @IBOutlet weak var showRating: RatingControl!
     @IBOutlet weak var showComment: UITextView!
     
-    
+    //MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +30,7 @@ class ShowSubjectViewController: UIViewController {
         showRating.rating = Int(model.subjectDB[ShowSubjectViewController.selectedSubject!].rate)
         showComment.text = model.subjectDB[ShowSubjectViewController.selectedSubject!].comment
         navigationItem.title = model.subjectDB[ShowSubjectViewController.selectedSubject!].code
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,24 +44,10 @@ class ShowSubjectViewController: UIViewController {
     
     
     //MARK: - Actions
-    
     @IBAction func goBack(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
         
     }
-    
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 

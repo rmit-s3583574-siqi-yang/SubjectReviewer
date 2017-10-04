@@ -9,7 +9,6 @@
 import UIKit
 import os.log
 
-
 class SubjectTableViewController: UITableViewController {
     
     //MARK: - Properties
@@ -20,36 +19,13 @@ class SubjectTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let dataFiles = NSHomeDirectory()
-        print ("yooooo->"+dataFiles)
-        
-        print("---------------------------------------------------")
-        print("I will print all subjects you have!")
-        print("you have \(model.subjectDB.count) subjects for now")
-        for eachSubject in 0..<model.subjectDB.count{
-            
-            
-            print(model.subjectDB[eachSubject].code ?? "it's nil")
-            print(model.subjectDB[eachSubject].name ?? "it's nil")
-            print(model.subjectDB[eachSubject].rate)
-            
-            
-        }
-        print("finish----------------------------------for now!")
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
         //Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         navigationItem.leftBarButtonItem = editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         tableView.reloadData()
         model.getSubjects()
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -75,14 +51,11 @@ class SubjectTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? SubjectTableViewCell else {
             // Add a new Subject.
             fatalError("The dequeued cell is not an instance of SubjectTableViewCell.")
-            
-            
         }
         
         let sub = model.getSubject(indexPath)
         
         //cell
-
         cell.nameLabel.text = sub.name
         cell.codeLabel.text = sub.code
         cell.imageDisplay.image = UIImage(named: sub.image!)
@@ -90,34 +63,13 @@ class SubjectTableViewController: UITableViewController {
 
         return cell
     }
-    
-//    //MARK: - Actions
-//    @IBAction func unwindToSubjectList(sender: UIStoryboardSegue) {
-//        
-//        // check whether a row in the table view is selected
-//        if let selectedIndexPath = tableView.indexPathForSelectedRow {
-//            // Update an existing subject.
-//            model.editSub(index: selectedIndexPath.row)
-//            tableView.reloadRows(at: [selectedIndexPath], with: .none)
-//        }
-//        else {
-//            // Add a new subject.
-//            model.addNewSub()
-//            let newIndexPath = IndexPath(row: model.manySubjects.count-1, section: 0)
-//            tableView.insertRows(at: [newIndexPath], with: .right)
-//            
-//        }
-//    
-//    }
-    
-    
+
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    
     
     
     // Override to support editing the table view.
@@ -132,42 +84,7 @@ class SubjectTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
-    
-    
-    
-//    // MARK: - Enable Swipe to Delete
-//    // System method that enables swipe to delete on a row in a tableview controller.
-//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
-//    {
-//        return true
-//    }
-//    
-//    // System method that gets called when delete is selected
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
-//    {
-//        model.deleteSubject(model.subjectDB[indexPath.row])
-//        model.subjectDB.remove(at: indexPath.row)
-//        
-//        self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
-//        model.getSubjects()
-//    }
-    
-    
-    
-    //     // Override to support rearranging the table view.
-    //     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-    //
-    //     }
-    //
-    //
-    //
-    //     // Override to support conditional rearranging of the table view.
-    //     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-    //     // Return false if you do not want the item to be re-orderable.
-    //     return true
-    //     }
-    
-    
+
     
     // MARK: - Navigation
     
@@ -181,11 +98,7 @@ class SubjectTableViewController: UITableViewController {
             ShowSubjectViewController.selectedSubject = nil
             
         case "ShowDetail":
-            
-            //            guard let destinationNavigationController = segue.destination as? UINavigationController else{
-            //                fatalError("Unexpected destination: \(segue.destination)")
-            //            }
-            
+
             guard let selectedSubjectCell = sender as? SubjectTableViewCell else {
                 fatalError("Unexpected sender: ")
             }
@@ -199,14 +112,11 @@ class SubjectTableViewController: UITableViewController {
             
             ShowSubjectViewController.selectedSubject = selectedSubject
             
-            
         default:
             fatalError("Unexpected Segue Identifier;")
             
         }
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+
     }
-    
-    
+     
 }

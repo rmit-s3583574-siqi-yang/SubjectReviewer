@@ -11,6 +11,8 @@ import UIKit
 @IBDesignable class RatingControl: UIStackView {
     
     //MARK: - Properties
+    
+    // @design
     @IBInspectable var starSize: CGSize = CGSize(width: 40.0, height: 40.0){
         didSet{
             setupButtons()
@@ -22,6 +24,7 @@ import UIKit
         }
     }
     
+    // button array
     private var ratingButtons = [UIButton]()
     
     var rating = 0{
@@ -36,7 +39,6 @@ import UIKit
         setupButtons()
         
     }
-    
     
     required init(coder: NSCoder) {
         super.init(coder: coder)
@@ -66,7 +68,7 @@ import UIKit
     //MARK: - Private Methods
     
     private func setupButtons(){
-
+        
         // Remove all buttons in the last setups
         for button in ratingButtons{
             removeArrangedSubview(button)
@@ -144,6 +146,5 @@ import UIKit
             button.accessibilityValue = valueString
         }
     }
-    
     
 }

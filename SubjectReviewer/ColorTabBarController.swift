@@ -40,28 +40,5 @@ import UIKit
             return color
         }
     }
-    
-//    @IBInspectable var titleColor: UIColor? {
-//        set {
-//            guard let color = newValue else { return }
-//            tabBar.titleTextAttributes = [NSForegroundColorAttributeName: color]
-//        }
-//        get {
-//            return tabBar.titleTextAttributes?["NSForegroundColorAttributeName"] as? UIColor
-//        }
-//    }
-    
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

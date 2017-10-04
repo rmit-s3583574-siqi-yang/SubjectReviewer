@@ -4,7 +4,7 @@
 //
 //  Created by siqi yang on 25/9/17.
 //  Copyright © 2017 siqi yang. All rights reserved.
-//
+//  Reference https://stackoverflow.com/a/45094082  by Fangming Ning 2017 Jul 14 at 3:27
 
 import UIKit
 
@@ -43,26 +43,11 @@ import UIKit
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 }
