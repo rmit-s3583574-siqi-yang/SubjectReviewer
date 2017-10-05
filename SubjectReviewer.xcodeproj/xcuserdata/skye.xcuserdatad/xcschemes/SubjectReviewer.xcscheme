@@ -37,6 +37,11 @@
                BlueprintName = "SubjectReviewerTests"
                ReferencedContainer = "container:SubjectReviewer.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "getLocationStringTest">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">

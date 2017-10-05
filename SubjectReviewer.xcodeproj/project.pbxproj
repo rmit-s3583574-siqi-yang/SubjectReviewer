@@ -17,6 +17,7 @@
 		31B415AA1F80A72900938A31 /* SubjectReviewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31B415A81F80A72900938A31 /* SubjectReviewer.xcdatamodeld */; };
 		31C770B51F6A3F6600E949DC /* SubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C770B41F6A3F6600E949DC /* SubjectTableViewCell.swift */; };
 		31C770B71F6F558B00E949DC /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C770B61F6F558B00E949DC /* RatingControl.swift */; };
+		31DE345B1F85E82000EB4F2C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5A2011F833BD3007BF9FF /* MapViewController.swift */; };
 		31E5A2021F833BD3007BF9FF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5A2011F833BD3007BF9FF /* MapViewController.swift */; };
 		31E5A2041F8341AB007BF9FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31E5A2031F8341AB007BF9FF /* Assets.xcassets */; };
 		31E5A2061F834401007BF9FF /* ColorTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E5A2051F834401007BF9FF /* ColorTabBarController.swift */; };
@@ -28,7 +29,7 @@
 		31FF00421F52452B006183DB /* AddSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF00411F52452B006183DB /* AddSubjectViewController.swift */; };
 		31FF00451F52452B006183DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31FF00431F52452B006183DB /* Main.storyboard */; };
 		31FF004A1F52452B006183DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31FF00481F52452B006183DB /* LaunchScreen.storyboard */; };
-		31FF00551F52452B006183DB /* SubjectReviewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF00541F52452B006183DB /* SubjectReviewerTests.swift */; };
+		31FF00551F52452B006183DB /* GetLocationStringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF00541F52452B006183DB /* GetLocationStringTest.swift */; };
 		31FF00601F52452B006183DB /* SubjectReviewerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF005F1F52452B006183DB /* SubjectReviewerUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,7 +75,7 @@
 		31FF00491F52452B006183DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31FF004B1F52452B006183DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31FF00501F52452B006183DB /* SubjectReviewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SubjectReviewerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		31FF00541F52452B006183DB /* SubjectReviewerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectReviewerTests.swift; sourceTree = "<group>"; };
+		31FF00541F52452B006183DB /* GetLocationStringTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetLocationStringTest.swift; path = SubjectReviewerTests/GetLocationStringTest.swift; sourceTree = SOURCE_ROOT; };
 		31FF00561F52452B006183DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31FF005B1F52452B006183DB /* SubjectReviewerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SubjectReviewerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31FF005F1F52452B006183DB /* SubjectReviewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectReviewerUITests.swift; sourceTree = "<group>"; };
@@ -121,6 +122,7 @@
 		31745D3A1F84F88B00271980 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				31FF00541F52452B006183DB /* GetLocationStringTest.swift */,
 				31745D411F8507DE00271980 /* MapUnitTest.swift */,
 			);
 			name = UnitTests;
@@ -200,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				31745D3A1F84F88B00271980 /* UnitTests */,
-				31FF00541F52452B006183DB /* SubjectReviewerTests.swift */,
 				31FF00561F52452B006183DB /* Info.plist */,
 			);
 			path = SubjectReviewerTests;
@@ -373,7 +374,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				31745D421F8507DE00271980 /* MapUnitTest.swift in Sources */,
-				31FF00551F52452B006183DB /* SubjectReviewerTests.swift in Sources */,
+				31DE345B1F85E82000EB4F2C /* MapViewController.swift in Sources */,
+				31FF00551F52452B006183DB /* GetLocationStringTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

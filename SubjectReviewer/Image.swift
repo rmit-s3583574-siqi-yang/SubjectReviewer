@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Image.swift
 //  SubjectReviewer
 //
 //  Created by siqi yang on 28/9/17.

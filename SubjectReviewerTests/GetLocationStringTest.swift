@@ -1,5 +1,5 @@
 //
-//  SubjectReviewerTests.swift
+//  GetLocationStringTest.swift
 //  SubjectReviewerTests
 //
 //  Created by siqi yang on 27/8/17.
@@ -8,9 +8,9 @@
 
 import XCTest
 @testable import SubjectReviewer
-
-class SubjectReviewerTests: XCTestCase {
-    
+import CoreLocation
+class GetLocationStringTest: XCTestCase {
+    var map: MapViewController = MapViewController()
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -22,6 +22,10 @@ class SubjectReviewerTests: XCTestCase {
     }
     
     func testExample() {
+        let lat: CLLocationDegrees = -33.0
+        let lng: CLLocationDegrees = 144.0
+        let result = map.getLocationString(lat,lng)
+        XCTAssert(result == "location=-33.0,144.0", "The string not right")
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

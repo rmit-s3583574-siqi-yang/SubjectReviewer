@@ -38,7 +38,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     // Constants for building various url requests to the service
     let BASE_URL: String = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?&rankby=distance&"
     let TYPE: String = "&type=library&keyword=library"
-    let KEY: String = "&key=\(AppDelegate.key)"
+    let KEY: String = "&key=AIzaSyAMJlmar1bnGJza-mpBFgSg0CBNgOI-jC0"
     
     private var currentTextField: UITextField?
     
@@ -101,7 +101,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     //MARK: - private func
     
-    private func getLocationString(_ lat: CLLocationDegrees,_ lng: CLLocationDegrees) -> String{
+    func getLocationString(_ lat: CLLocationDegrees,_ lng: CLLocationDegrees) -> String{
         return "location=\(lat),\(lng)"
     }
     
